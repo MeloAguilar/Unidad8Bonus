@@ -11,26 +11,17 @@ namespace UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ListadosPlantas plantas = new ListadosPlantas();
-        List<SelectListItem> items = new List<SelectListItem>();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
             
-            int cont = 0;
-            foreach (var item in plantas.plantas)
-            {
-
-                items.Add(new SelectListItem { Text = item.Nombre, Value = cont.ToString() });
-                cont++;
-
-            }
         }
 
         public IActionResult Index()
         {
   
-            IEnumerable<SelectListItem> lista = items;
-            ViewBag.Plantas = (IEnumerable<clsPlanta>)plantas.plantas;
+           
+            ViewBag.Plantas = (IEnumerable<clsPlanta>)plantas.ListadoCompleto();
 
             return View();
         }
@@ -38,13 +29,14 @@ namespace UI.Controllers
         [HttpPost]
         public IActionResult Index(string Plantas)
         {
-            ViewBag.Plantas = (IEnumerable<clsPlanta>)plantas.plantas;
+            
+            ViewBag.Plantas = (IEnumerable<clsPlanta>)plantas.ListadoCompleto();
             string desc = "";
-            for(int i = 0; i < plantas.plantas.Count && desc.Equals(""); i++)
+            for(int i = 0; i < plantas.ListadoCompleto().Count && desc.Equals(""); i++)
     {
-                if (plantas.plantas[i].Nombre.Equals(Plantas))
+                if (plantas.ListadoCompleto()[i].Nombre.Equals(Plantas))
                 {
-                    desc = plantas.plantas[i].Datos;
+                    desc = plantas.ListadoCompleto()[i].Datos;
                 }
 
                 ViewBag.Desc = desc;

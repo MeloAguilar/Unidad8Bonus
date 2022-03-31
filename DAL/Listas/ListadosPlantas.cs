@@ -9,17 +9,15 @@ namespace DAL.Listas
 {
     public class ListadosPlantas
     {
-        public List<clsPlanta> plantas = new List<clsPlanta>();
-        public ListadosPlantas()
-        {
-            Generar();
-        }
+   
 
-        //
-        private void Generar() 
+        //En realidad en esta capa se realizarían las llamadas a la base de datos
+        //Para esta ocasion 
+        public List<clsPlanta> ListadoCompleto() 
         {
-            int cont = 1;
-            plantas.Add(new clsPlanta()
+            List<clsPlanta> plants = new List<clsPlanta>(); 
+            int cont = 0;
+            plants.Add(new clsPlanta()
             {
                 Id = cont,
                 Nombre = "Aloe vera",
@@ -32,7 +30,7 @@ namespace DAL.Listas
                 "la de aliviar las quemaduras, rozaduras e, incluso, " +
                 "psoriasis y picaduras de insectos."
             });
-            plantas.Add(new clsPlanta()
+            plants.Add(new clsPlanta()
             {
                 Id= cont++,
                 Nombre = "Valeriana",
@@ -42,7 +40,7 @@ namespace DAL.Listas
                 "el más conocido sea el ayudar a relajarnos. La valeriana es " +
                 "una planta que disminuye la ansiedad y ayuda a dormir. "
             });
-            plantas.Add(new clsPlanta()
+            plants.Add(new clsPlanta()
             {
                 Id= cont++,
                 Nombre = "Amapola",
@@ -51,7 +49,7 @@ namespace DAL.Listas
                 "prevenir enfermedades cardiovasculares, anemias o afecciones de " +
                 "la piel."
             });
-            plantas.Add(new clsPlanta()
+            plants.Add(new clsPlanta()
             {
                 Id= cont++,
                 Nombre = "Eucalipto",
@@ -64,7 +62,7 @@ namespace DAL.Listas
                 "de los resfriados, en concreto afecciones respiratorias " +
                 "(tos, bronquitis, neumonía, asma...)."
             });
-            plantas.Add(new clsPlanta()
+            plants.Add(new clsPlanta()
             {
                 Id= cont++,
                 Nombre = "Salvia",
@@ -73,7 +71,7 @@ namespace DAL.Listas
                 "otras funciones. Entre las más conocidas está su utilización " +
                 "para aliviar los síntomas de la menopausia."
             });
-            plantas.Add(new clsPlanta()
+            plants.Add(new clsPlanta()
             {
                 Id= cont++,
                 Nombre = "Arándanos",
@@ -86,6 +84,7 @@ namespace DAL.Listas
                 "entre las que destaca su capacidad antibacteriana, " +
                 "ya que ayuda a combatir infecciones. "
             });
+            return plants;
         }
     }
 }

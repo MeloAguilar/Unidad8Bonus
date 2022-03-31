@@ -9,33 +9,29 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
 
-<form method="post">
-    <select name="Plantas">
-        @{int cont = 0;}
-        
-        @foreach (var item in ViewBag.Plantas)
+    <form method="post">
+        <h3>Seleccione una Planta de la lista</h3>
+        <select name="Plantas">
+            @foreach (var item in ViewBag.Plantas)
             {
                 <option value=@item.Nombre>@item.Nombre</option>
-               
+
             }
+        </select>
+        <input type="submit" name="Ver datos" id="Ver Datos" />
+        <hr />
+        <div content="width=device-width">@ViewBag.Desc</div>
 
-    </select>
-    
-    
-    <input type="submit" name="Ver datos" id="Ver Datos"/>
-    <hr />
-    <div  content="width=device-width">@ViewBag.Desc</div>
-    
-</form>
-
-    
+    </form>
 
 
-  
+
+
+
 
 </body>
 </html>
