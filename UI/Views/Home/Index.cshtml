@@ -1,4 +1,4 @@
-﻿
+﻿@model UI.ViewModels.PlantasDescripcionesVM
 
 
 <!DOCTYPE html>
@@ -15,16 +15,25 @@
 
     <form method="post">
         <h3>Seleccione una Planta de la lista</h3>
-        <select name="Plantas">
-            @foreach (var item in ViewBag.Plantas)
+        <hr />
+        <select name="Nombre"> @*TODO -> Hacerlo con model binding y que la segunda vez se quede seleccionada la planta*@
+            @foreach (var item in @Model.Plantas)
             {
                 <option value=@item.Nombre>@item.Nombre</option>
 
+                if(@Model.PlantaSeleccionada.Nombre != null)
+                {
+                    <option selected value=@Model.PlantaSeleccionada.Nombre></option>
+                }
             }
         </select>
         <input type="submit" name="Ver datos" id="Ver Datos" />
         <hr />
-        <div content="width=device-width">@ViewBag.Desc</div>
+        @if(@Model.PlantaSeleccionada != null)
+        {
+            <div content="width=device-width">@Model.PlantaSeleccionada.Datos</div>
+        }
+        
 
     </form>
 

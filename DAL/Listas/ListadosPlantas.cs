@@ -9,13 +9,51 @@ namespace DAL.Listas
 {
     public class ListadosPlantas
     {
-   
+
+        private List<clsPlanta> plantas { get; set; }
+
+        public ListadosPlantas()
+        {
+            plantas = GenerarListadoCompleto();
+        }
+
+        /// <summary>
+        /// Método que se encarga de recoger una planta dado su nombre y la devuelve como salida
+        /// </summary>
+        /// <param name="Nombre"></param>
+        /// <returns>clsPlanta: salida</returns>
+        public clsPlanta RecogerPlanta(string Nombre)
+        {
+            bool encontrado = false;
+            clsPlanta salida = null;
+            for (int i = 0; i < plantas.Count && !encontrado; i++)
+            {
+                if (Nombre == plantas.ElementAt(i).Nombre)
+                {
+
+                    salida = plantas.ElementAt(i);
+                }
+            }
+            return salida;
+        }
+
+        /// <summary>
+        /// Cuando tengamos base de datos esto irá en la carpeta de gestion de datos
+        /// mientras tanto me parece que es lo único que se puede hacer
+        /// </summary>
+        /// <returns></returns>
+        public List<clsPlanta> ListadoPlantas() 
+        { 
+            return GenerarListadoCompleto();
+        }
+
+
 
         //En realidad en esta capa se realizarían las llamadas a la base de datos
-        //Para esta ocasion 
-        public List<clsPlanta> ListadoCompleto() 
+        //Para esta ocasion se utilizará como base de datos esta misma clase por lo que este método servirá como conexion
+        private List<clsPlanta> GenerarListadoCompleto()
         {
-            List<clsPlanta> plants = new List<clsPlanta>(); 
+            List<clsPlanta> plants = new List<clsPlanta>();
             int cont = 0;
             plants.Add(new clsPlanta()
             {
