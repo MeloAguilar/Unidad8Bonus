@@ -30,8 +30,8 @@ namespace DAL.Listas
             {
                 if (Nombre == plantas.ElementAt(i).Nombre)
                 {
-
                     salida = plantas.ElementAt(i);
+                    encontrado = true;
                 }
             }
             return salida;

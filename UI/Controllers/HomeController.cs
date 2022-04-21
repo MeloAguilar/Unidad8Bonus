@@ -28,8 +28,7 @@ namespace UI.Controllers
         /// <returns>View: Index </returns>
         public IActionResult Index()
         {
-
-            return View(viewModel);
+           return View(viewModel);
         }
 
 
@@ -44,10 +43,10 @@ namespace UI.Controllers
 
         //TODO Hacer que el post reciba un model binding
         [HttpPost]
-        public IActionResult Index(PlantasDescripcionesVM vm)
+        public IActionResult Index(clsPlanta planta)
         {
-
-            return View(vm);
+            viewModel.PlantaSeleccionada = plantas.RecogerPlanta(planta.Nombre);
+            return View(viewModel);
         }
 
 

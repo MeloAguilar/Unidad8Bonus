@@ -32,6 +32,7 @@ namespace UI.ViewModels
 
         public PlantasDescripcionesVM()
         {
+            plantas = new List<clsPlanta>();    
             PlantaSeleccionada = new clsPlanta() { Nombre = "", Datos = "" };
            
         }
